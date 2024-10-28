@@ -23,38 +23,40 @@ int main() {
 		b.push_back(element);
 	}
 	
-	for (size_t k = 0; k < a.size(); k++) {
-		if (a[k][k] == 0) {
-			size_t row1 = k;
-			size_t row2 = k;
-			for (size_t i = k + 1; i < a.size(); i++) {
-				if (a[i][k] != 0) {
-					row2 = i;
-					break;
-				}
+	for (size_t  k = 0; k < a.size() - 1; k++) {
+		size_t row1 = k;
+		size_t row2 = k;
+		double max = std::abs(a[k][k]);
+
+		for (size_t i = k+1; i < a.size(); i++) {
+			if (std::abs(a[i][k]) > max) {
+				max = std::abs(a[i][k]);
+				row2 = i;
 			}
-			if (row2 == k) {
-				std::cout << "error\n";
-				std::exit(EXIT_FAILURE);
-			}
-			std::vector<double>c = a[row1];
-			a[row1] = a[row2];
-			a[row2] = c;
 		}
-		for (size_t i = k + 1; i < a.size(); i++) {
-					
-				
+		if (max == 0) {
+			cout << "error\n";
+			std::exit(EXIT_FAILURE);
+
+		}
+		
+		
+		vector<double>c = a[row1];
+		a[row1] = a[row2];
+		a[row2] = c;
+		
+		for (size_t i = k + 1; i < a.size(); i++) {		
 			double kati = a[i][k] / a[k][k];
-					
+							
 			for (size_t j = k; j < a.size(); j++) {
-					
+							
 				a[i][j] =a[i][j]- kati * a[k][j];
-						
+								
 			}
 			b[i] = b[i] - kati * b[k];
 		}
-	    
-	}
+
+        }
 	printmatrix(a, b);
 	//backwards substitution:
 	std::vector <double>x(size);
