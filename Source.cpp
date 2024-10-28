@@ -23,7 +23,7 @@ int main() {
 		b.push_back(element);
 	}
 	
-	for (size_t  k = 0; k < a.size() - 1; k++) {
+	for (size_t  k = 0; k < a.size() ; k++) {
 		size_t row1 = k;
 		size_t row2 = k;
 		double max = std::abs(a[k][k]);
