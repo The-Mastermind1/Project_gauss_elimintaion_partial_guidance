@@ -83,7 +83,7 @@ for (size_t k = a.size() - 1; k > 0; k--) {
 size_t k = 0;
 while (k == 0) {
 	x[k] = b[k];
-	for (int j = k + 1; j < a.size(); j++) {
+	for (size_t j = k + 1; j < a.size(); j++) {
 		x[k] = (x[k] - a[k][j] * x[j]);
 	}
 	x[k] = x[k] / a[k][k];
