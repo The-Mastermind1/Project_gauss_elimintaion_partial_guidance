@@ -1,7 +1,7 @@
 #pragma once
 #include<iostream>
 #include<vector>
-
+#include<cassert>
 inline void printmatrix(const std::vector<std::vector<double>>& a, const std::vector<double>& b) {
     std::cout << "A:\n";
     for (size_t i = 0; i < a.size(); i++) {
@@ -25,13 +25,13 @@ inline void printsolution(const std::vector<double>& a) {
     return;
 }
 inline void verification(const vector<vector<double>>& a, const vector<double>& b) {
-    cout << "verification:\n";
+    std::cout << "verification:\n";
     for (int i = 0; i < a.size(); i++) {
         double s = 0;
         for (int j = 0; j < a.size(); j++) {
             s += a[i][j] * b[j];
         }
-        cout << s << '\n';
+        std::cout << s << '\n';
     }
     return;
 }
